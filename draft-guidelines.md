@@ -1,7 +1,7 @@
 ---
 title: Guidelines for Human Rights Protocol and Architecture Considerations
 abbrev: Guidelines for HRPC
-docname: draft-irtf-hrpc-guidelines-12
+docname: draft-irtf-hrpc-guidelines-13
 category: info
 updates: 8280
 
@@ -385,7 +385,7 @@ Is your protocol optimized for low bandwidth and high latency connections? Could
 
 
 Explanation:
-The end-to-end principle {{Saltzer}} holds that 'the intelligence is end to end rather than hidden in the network' {{RFC1958}}. Generally speaking, it is easier to attain reliability of data transmissions with computation at endpoints rather than at intermediary nodes. 
+The end-to-end principle {{Saltzer}} holds that certain functions can and should be performed at 'ends' of the network. {{RFC1958}} states "that in very general terms, the community believes that the goal is connectivity [...] and the intelligence is end to end rather than hidden in the network.” Generally speaking, it is easier to attain reliability of data transmissions with computation at endpoints rather than at intermediary nodes. 
 
 Also considering the fact that network quality and conditions vary across geography and time, it is also important to design protocols such that they are reliable even on low bandwidth and high latency connections.
 
@@ -779,7 +779,10 @@ Impacts:
 
 Question(s): Can your protocol facilitate a negatively impacted party's right to remedy without disproportionately impacting other parties' human rights, especially their right to privacy?
 
-Explanation: Access to remedy may help victims of human rights violations in seeking justice, or allow law enforcement agencies to identify a possible violator. However, such mechanisms may impede the exercise of the right to privacy. The former Special Rapporteur for Freedom of Expression has also argued that anonymity is an inherent part of freedom of expression {{Kaye}}. Considering the potential adverse impact of attribution on the right to privacy and freedom of expression, enabling attribution on an individual level is most likely not consistent with human rights. However, providing access to remedy by states and corporations is an inherent part of the UN Guiding Principles on Business and Human Rights {{UNGP}}.
+Explanation: Providing access to remedy by states and corporations is a part of the UN Guiding Principles on Business and Human Rights {{UNGP}}. Access to remedy may help victims of human rights violations in seeking justice, or allow law enforcement agencies to identify a possible violator. However, mechanisms in protocols that try to enable 'attribution' to individuals will impede the exercise of the right to privacy. The former Special Rapporteur for Freedom of Expression has also argued that anonymity is an inherent part of freedom of expression {{Kaye}}. Considering the potential adverse impact of attribution on the right to privacy and freedom of expression, enabling attribution on an individual level is most likely not consistent with human rights. 
+
+Example:
+Adding personal identifiable information to data streams might help in identifying a violator of human rights and provide access to remedy, but this would disproportionally affect all users right to privacy, anonymous expression, and association.
 
 Impacts:
 
@@ -806,7 +809,7 @@ Acknowledgements
 Thanks to:
 
 - Corinne Cath-Speth for work on {{RFC8280}}. 
-- Theresa Engelhard, Joe Hall, Avri Doria, Joey Salazar, Corinne Cath-Speth, Farzaneh Badii, Sandra Braman, Colin Perkins, John Curran, Mallory Knodel, and the hrpc list for reviews and suggestions.
+- Theresa Engelhard, Joe Hall, Avri Doria, Joey Salazar, Corinne Cath-Speth, Farzaneh Badii, Sandra Braman, Colin Perkins, John Curran, Eliot Lear, Mallory Knodel, and the hrpc list for reviews and suggestions.
 - Individuals who conducted human rights reviews for their work and feedback: Amelia Andersdotter, Beatrice Martini, Karan Saini and Shivan Kaul Sahib.
 
 Security Considerations
@@ -815,7 +818,7 @@ Security Considerations
 Article three of the Universal Declaration of Human Rights reads: "Everyone has the right to life, liberty and security of person.". This article underlines the importance of security and its interrelation with human life and liberty, but since human rights are indivisible, interrelated and interdependent, security is also closely linked to other human rights and freedoms. This document seeks to strengthen human rights, freedoms, and security by relating and translating these concepts to concepts and practices as they are used in Internet protocol and architecture development. The aim of this is to secure human right and thereby improve the susainability, usability, and effectiveness of the network. The document seeks to achieve this by providing guidelines as done in section three of this document.
 
 IANA Considerations
-================https://github.com/IRTF-HRPC/drafts/commit/5500acb24a3ddcd1bad2c474cea81f0b298e83e1===
+===================
 This document has no actions for IANA.
 
 Research Group Information
