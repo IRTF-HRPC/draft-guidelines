@@ -285,6 +285,11 @@ informative:
      author:
         - org: United Nations
      target: https://www.ohchr.org/en/professionalinterest/pages/coreinstruments.aspx
+   
+   HR-RT:
+     title: Human Rights Reviews
+     date: 2022
+     target: https://github.com/IRTF-HRPC/reviews
      
    arkkoetal:
      title: Considerations on Internet Consolidation and the Internet Architecture
@@ -317,7 +322,7 @@ This document outlines a set of human rights protocol considerations for protoco
 
 The questions are based on the research performed by the Human Rights Protocol Considerations (HRPC) research group which has been documented before these considerations. The research establishes that human rights relate to standards and protocols, and offers a common vocabulary of technical concepts that influence human rights and how these technical concepts can be combined to ensure that the Internet remains an enabling environment for human rights. With this, the contours of a model for developing human rights protocol considerations has taken shape.
 
-This document is an iteration of the guidelines that can be found in {{RFC8280}}. The methods for conducting human rights reviews (Section 3.2), and guidelines for human rights considerations (Section 3.3) in this document are being tested for relevance, accuracy, and validity. The understanding of what human rights are is based on the Universal Declaration of Human Rights {{UDHR}} and subsequent treaties that jointly form the body of international human rights law {{UNHR}}.
+This document is an iteration of the guidelines that can be found in {{RFC8280}}. The methods for conducting human rights reviews (Section 3.2), and guidelines for human rights considerations (Section 3.3) in this document are being tested for relevance, accuracy, and validity. {{HR-RT}} The understanding of what human rights are is based on the Universal Declaration of Human Rights {{UDHR}} and subsequent treaties that jointly form the body of international human rights law {{UNHR}}.
 
 This document does not provide a detailed taxonomy of the nature of (potential) human rights violations, whether direct or indirect, long-term or short-term, certain protocol choices might present. In part because this is highly context-dependent, and in part, because this document aims to provide a practical set of guidelines. However, further research in this field would definitely benefit developers and implementers.
 
@@ -343,12 +348,12 @@ Conducting human rights reviews
 
 Ideally, protocol developers and collaborators should incorporate human rights considerations into the design process itself (see Guidelines for human rights considerations). This section provides guidance on how to conduct a human rights review, i.e., gauge the impact or potential impact of a protocol or standard on human rights.
 
-Human rights reviews can take place at different stages of the development process of an Internet-Draft. Generally speaking, it is easier to influence the development of a technology at earlier stages than at later stages. This does not mean that reviews at last-call are not relevant, but they are less likely to result in significant changes in the reviewed document. 
+Human rights reviews can be done by any participant, and can take place at different stages of the development process of an Internet-Draft. Generally speaking, it is easier to influence the development of a technology at earlier stages than at later stages. This does not mean that reviews at last-call are not relevant, but they are less likely to result in significant changes in the reviewed document. 
 
 Methods for analyzing technology for specific human rights impacts are still quite nascent. Currently, five methods have been explored by the Human Rights Review Team, often in conjunction with each other: 
 
 ## Analyzing drafts based on guidelines for human rights considerations model
-This analysis of Internet-Drafts uses the model as described in section 3.3. The outlined categories and questions can be used to review an Internet-Draft. The advantage of this is that it provides a known overview, and document authors can go back to this document as well as {{RFC8280}} to understand the background and the context. 
+This analysis of Internet-Drafts uses the model as described in section 4. The outlined categories and questions can be used to review an Internet-Draft. The advantage of this is that it provides a known overview, and document authors can go back to this document as well as {{RFC8280}} to understand the background and the context. 
 
 ## Analyzing drafts based on their perceived or speculated impact
 When reviewing an Internet-Draft, specific human rights impacts can become apparent by doing a close reading of the draft and seeking to understand how it might affect networks or society. While less structured than the straight use of the human rights considerations model, this analysis may lead to new speculative understandings of links between human rights and protocols. 
@@ -809,7 +814,7 @@ Acknowledgements
 Thanks to:
 
 - Corinne Cath-Speth for work on {{RFC8280}}. 
-- Theresa Engelhard, Joe Hall, Avri Doria, Joey Salazar, Corinne Cath-Speth, Farzaneh Badii, Sandra Braman, Colin Perkins, John Curran, Eliot Lear, Mallory Knodel, and the hrpc list for reviews and suggestions.
+- Theresa Engelhard, Joe Hall, Avri Doria, Joey Salazar, Corinne Cath-Speth, Farzaneh Badii, Sandra Braman, Colin Perkins, John Curran, Eliot Lear, Mallory Knodel, Brian Trammell, Jane Coffin, and the hrpc list for reviews and suggestions.
 - Individuals who conducted human rights reviews for their work and feedback: Amelia Andersdotter, Beatrice Martini, Karan Saini and Shivan Kaul Sahib.
 
 Security Considerations
