@@ -524,6 +524,29 @@ Impacts:
 - Right to freedom of expression
 - Right to political participation
 
+
+## Adaptability
+
+Question(s):
+Is your protocol written in such a way that it would be easy for other protocols to be developed on top of it, or to interact with it? Does your protocol impact permissionless innovation? (See Open Standards)
+
+Explanation:
+Adaptability is closely interrelated with permissionless innovation: both maintain the freedom and ability to freely create and deploy new protocols on top of the communications constructs that currently exist. It is at the heart of the Internet as we know it, and to maintain its fundamentally open nature, we need to be mindful of the impact of protocols on maintaining or reducing permissionless innovation to ensure the Internet can continue to develop.
+
+Adaptability and permissionless innovation can be used to shape information networks as preferenced by groups of users. Furthermore, a precondition of adaptability is the ability of the people who can adapt the network to be able to know and understand the network. This is why adaptability and permissionless innovation are inherently connected to the right to education and the right to science as well as the right to freedom of assembly and association as well as the right to freedom of expression. Since it allows the users of the network to determine how to assemble, collaborate, and express themselves. 
+
+
+Example:
+WebRTC generates audio and/or video data. In order to ensure that WebRTC can be used in different locations by different parties, it is important that standard Javascript application programming interfaces (APIs) are developed to support applications from different voice service providers. Multiple parties will have similar capabilities, in order to ensure that all parties can build upon existing standards these need to be adaptable, and allow for permissionless innovation.
+
+Impacts:
+
+- Right to education
+- Right to science
+- Right to freedom of expression
+- Right to freedom of assembly and association
+
+
 ## Integrity
 
 Question(s):
@@ -638,6 +661,7 @@ See {{RFC6973}}
 Impacts:
 
 - Right to freedom of expression
+- Right to privacy
 - Right to non-discrimination
 
 ## Pseudonymity
@@ -711,11 +735,11 @@ Impacts:
 
 ## Outcome Transparency
 
-Question(s): Are the effects of your protocol documented and easily comprehensible, including with respect to unintended consequences of protocol choices?
+Question(s): Are the intended and forseen effects of your protocol documented and easily comprehensible?
 
 Explanation: Certain technical choices may have unintended consequences.
 
-Example: Lack of authenticity may lead to lack of integrity and negative externalities, of which spam is an example. Lack of data that could be used for billing and accounting can lead to so-called "free" arrangements which obscure the actual costs and distribution of the costs, for example the barter arrangements that are commonly used for Internet interconnection; and the commercial exploitation of personal data for targeted advertising which is the most common funding model for the so-called "free" services such as search engines and social networks. Other unexpected outcomes might not be technical, but rather architectural, social or economic. Therefore it is of importance to document the intended outcome and other outcomes that have been considered.
+Example: Lack of authenticity may lead to lack of integrity and negative externalities, of which spam is an example. Lack of data that could be used for billing and accounting can lead to so-called "free" arrangements which obscure the actual costs and distribution of the costs, for example the barter arrangements that are commonly used for Internet interconnection; and the commercial exploitation of personal data for targeted advertising which is the most common funding model for the so-called "free" services such as search engines and social networks. Unexpected outcomes might not be technical, but rather architectural, social or economic. Therefore it is of importance to document the intended outcomes and other possible outcomes that have been considered.
 
 Impacts:
 
@@ -723,27 +747,6 @@ Impacts:
 - Right to privacy 
 - Right to freedom of assembly and association
 - Right to access to information 
-
-## Adaptability
-
-Question(s):
-Is your protocol written in such a way that it would be easy for other protocols to be developed on top of it, or to interact with it? Does your protocol impact permissionless innovation? (See Open Standards)
-
-Explanation:
-Adaptability is closely interrelated with permissionless innovation: both maintain the freedom and ability to freely create and deploy new protocols on top of the communications constructs that currently exist. It is at the heart of the Internet as we know it, and to maintain its fundamentally open nature, we need to be mindful of the impact of protocols on maintaining or reducing permissionless innovation to ensure the Internet can continue to develop.
-
-Adaptability and permissionless innovation can be used to shape information networks as preferenced by groups of users. Furthermore, a precondition of adaptability is the ability of the people who can adapt the network to be able to know and understand the network. This is why adaptability and permissionless innovation are inherently connected to the right to education and the right to science as well as the right to freedom of assembly and association as well as the right to freedom of expression. Since it allows the users of the network to determine how to assemble, collaborate, and express themselves. 
-
-
-Example:
-WebRTC generates audio and/or video data. In order to ensure that WebRTC can be used in different locations by different parties, it is important that standard Javascript application programming interfaces (APIs) are developed to support applications from different voice service providers. Multiple parties will have similar capabilities, in order to ensure that all parties can build upon existing standards these need to be adaptable, and allow for permissionless innovation.
-
-Impacts:
-
-- Right to education
-- Right to science
-- Right to freedom of expression
-- Right to freedom of assembly and association
 
 
 ## Accessibility
