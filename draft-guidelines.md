@@ -442,23 +442,6 @@ Impacts:
 - Right to non-discrimination
 - Right to equal protection
 
-## Localization
-
-Question(s):
-Does your protocol uphold the standards of internationalization? Have you made any concrete steps towards localizing your protocol for relevant audiences?
-
-Explanation:
-Localization refers to the adaptation of a product, application or document content to meet the language, cultural and other requirements of a specific target market (a locale) {{W3Ci18nDef}}. For our purposes, it can be described as the practice of translating an implementation to make it functional in a specific language or for users in a specific locale (see Internationalization).
-
-Example:
-The Internet is a global medium, but many of its protocols and products are developed with a certain audience in mind, that often share particular characteristics like knowing how to read and write in American Standard Code for Information Interchange (ASCII) and knowing English. This limits the ability of a large part of the world's online population from using the Internet in a way that is culturally and linguistically accessible. An example of a standard that has taken into account the view that individuals like to have access to data in their native language can be found in {{RFC5646}}. The document describes a way to label information with an identifier for the language in which it is written. And this allows information to be presented and accessed in more than one language.
-
-Impacts:
-
-- Right to non-discrimination
-- Right to participate in cultural life, arts and science
-- Right to freedom of expression
-
 ## Internationalization
 
 Question(s):
@@ -485,6 +468,23 @@ Impacts:
 - Right to freedom of expression
 - Right to political participation
 - Right to participate in cultural life, arts and science
+
+## Localization
+
+Question(s):
+Does your protocol uphold the standards of internationalization? Have you made any concrete steps towards localizing your protocol for relevant audiences?
+
+Explanation:
+Localization refers to the adaptation of a product, application or document content to meet the language, cultural and other requirements of a specific target market (a locale) {{W3Ci18nDef}}. For our purposes, it can be described as the practice of translating an implementation to make it functional in a specific language or for users in a specific locale (see Internationalization). The objective of international is localization, but they are not the same. Internationalization is a necessary precondition for localization.
+
+Example:
+The Internet is a global medium, but many of its protocols and products are developed with a certain audience in mind, that often share particular characteristics like knowing how to read and write in American Standard Code for Information Interchange (ASCII) and knowing English. This limits the ability of a large part of the world's online population from using the Internet in a way that is culturally and linguistically accessible. An example of a standard that has taken into account the view that individuals like to have access to data in their native language can be found in {{RFC5646}}. The document describes a way to label information with an identifier for the language in which it is written. And this allows information to be presented and accessed in more than one language.
+
+Impacts:
+
+- Right to non-discrimination
+- Right to participate in cultural life, arts and science
+- Right to freedom of expression
 
 ## Open Standards
 
