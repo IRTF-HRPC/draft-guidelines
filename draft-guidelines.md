@@ -1,7 +1,7 @@
 ---
 title: Guidelines for Human Rights Protocol and Architecture Considerations
 abbrev: Guidelines for HRPC
-docname: draft-irtf-hrpc-guidelines-14
+docname: draft-irtf-hrpc-guidelines-15
 category: info
 updates: 8280
 
@@ -311,7 +311,7 @@ This document sets guidelines for human rights considerations for developers wor
 
 This document is not an Internet Standards Track specification; it is published for informational purposes.
 
-This informational document has consensus for publication from the Internet Research Task Force (IRTF) Human Right Protocol Considerations Research (HRPC) Group. It has been reviewed, tried, and tested by both by the research group as well as by researchers and practitioners from outside the research group. The research group acknowledges that the understanding of the impact of Internet protocols and architecture on society is a developing practice and is a body of research that is still in development.
+This informational document has consensus for publication from the Internet Research Task Force (IRTF) Human Right Protocol Considerations Research (HRPC) Group. It has been reviewed, tried, and tested by both by the research group as well as by researchers and practitioners from outside the research group (for example see: https://gitlab.com/hr-rt/documents). The research group acknowledges that the understanding of the impact of Internet protocols and architecture on society is a developing practice and is a body of research that is still in development.
 
 --- middle
 
@@ -349,6 +349,8 @@ Conducting human rights reviews
 Ideally, protocol developers and collaborators should incorporate human rights considerations into the design process itself (see Guidelines for human rights considerations). This section provides guidance on how to conduct a human rights review, i.e., gauge the impact or potential impact of a protocol or standard on human rights.
 
 Human rights reviews can be done by any participant, and can take place at different stages of the development process of an Internet-Draft. Generally speaking, it is easier to influence the development of a technology at earlier stages than at later stages. This does not mean that reviews at last-call are not relevant, but they are less likely to result in significant changes in the reviewed document. 
+
+Human rights review can be done by document authors, document shepherds, members of review teams, advocates, or impacted communities to influence the standard development process. IETF documents can benefit from people with different knowledges, perspectives, and backgrounds, especially since their implementation can impact many different communities as well.  
 
 Methods for analyzing technology for specific human rights impacts are still quite nascent. Currently, five methods have been explored by the Human Rights Review Team, often in conjunction with each other: 
 
@@ -709,11 +711,11 @@ Impacts:
 
 ## Outcome Transparency
 
-Question(s): Are the effects of your protocol fully and easily comprehensible, including with respect to unintended consequences of protocol choices?
+Question(s): Are the effects of your protocol documented and easily comprehensible, including with respect to unintended consequences of protocol choices?
 
 Explanation: Certain technical choices may have unintended consequences.
 
-Example: Lack of authenticity may lead to lack of integrity and negative externalities, of which spam is an example. Lack of data that could be used for billing and accounting can lead to so-called "free" arrangements which obscure the actual costs and distribution of the costs, for example the barter arrangements that are commonly used for Internet interconnection; and the commercial exploitation of personal data for targeted advertising which is the most common funding model for the so-called "free" services such as search engines and social networks. Other unexpected outcomes might not be technical, but rather architectural, social or economic. 
+Example: Lack of authenticity may lead to lack of integrity and negative externalities, of which spam is an example. Lack of data that could be used for billing and accounting can lead to so-called "free" arrangements which obscure the actual costs and distribution of the costs, for example the barter arrangements that are commonly used for Internet interconnection; and the commercial exploitation of personal data for targeted advertising which is the most common funding model for the so-called "free" services such as search engines and social networks. Other unexpected outcomes might not be technical, but rather architectural, social or economic. Therefore it is of importance to document the intended outcome and other outcomes that have been considered.
 
 Impacts:
 
