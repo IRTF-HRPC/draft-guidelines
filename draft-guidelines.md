@@ -1,7 +1,7 @@
 ---
 title: Guidelines for Human Rights Protocol and Architecture Considerations
 abbrev: Guidelines for HRPC
-docname: draft-irtf-hrpc-guidelines-15
+docname: draft-irtf-hrpc-guidelines-16
 category: info
 updates: 8280
 
