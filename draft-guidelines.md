@@ -1,7 +1,7 @@
 ---
 title: Guidelines for Human Rights Protocol and Architecture Considerations
 abbrev: Guidelines for HRPC
-docname: draft-irtf-hrpc-guidelines-16
+docname: draft-irtf-hrpc-guidelines-17
 category: info
 updates: 8280
 
@@ -115,9 +115,9 @@ informative:
    Saltzer:
      title: End-to-End Arguments in System Design
      author:
-        - ins: J.H. Saltzer
-        - ins: D.P. Reed
-        - ins: D.D. Clark
+        - ins: J. H. Saltzer
+        - ins: D. P. Reed
+        - ins: D. D. Clark
      seriesinfo: ACM TOCS, Vol 2, Number 4, November
         1984, pp 277-288.
      date: 1984
@@ -205,17 +205,17 @@ informative:
         - ins: P. McManus
         - ins: T. Pauly
         - ins: T. Verma
-        - ins: C.A. Wood
+        - ins: C. A. Wood
      target: https://tools.ietf.org/html/draft-pauly-dprive-oblivious-doh
 
    draft-zuniga-mac-address-randomization:
      title: MAC address randomization
      date: 2020
      author:
-        - ins: JC. Zuniga
-        - ins: CJ. Bernardos
+        - ins: J. C. Zuniga
+        - ins: C. J. Bernardos
         - ins: A. Andersdotter
-     target: https://tools.ietf.org/html/draft-irtf-pearg-censorship
+     target: https://tools.ietf.org/html/draft-ietf-madinas-mac-address-randomization
 
    HTML5:
      title: HTML5
@@ -712,7 +712,7 @@ Impacts:
 ## Censorship resistance
 
 Question(s):
-Can your protocol contribute to filtering? Could it implemented to censor data or services? Could it be designed to ensure this doesn't happen? Does your protocol make it apparent or transparent when access to a resource is restricted and the reasons why it is restricted? Does your protocol introduce new identifiers or reuse existing identifiers (e.g., MAC addresses) that might be associated with persons or content?
+Can your protocol contribute to filtering? Could it be implemented to censor data or services? Could it be designed to ensure this doesn't happen? Does your protocol make it apparent or transparent when access to a resource is restricted and the reasons why it is restricted? Does your protocol introduce new identifiers or reuse existing identifiers (e.g., MAC addresses) that might be associated with persons or content?
 
 Explanation:
 Governments and service providers block or filter content or traffic, often without the knowledge of end-users. {{RFC7754}} See {{draft-irtf-pearg-censorship}} for a survey of censorship techniques employed across the world, which lays out protocol properties that have been exploited to censor access to information. Censorship resistance refers to the methods and measures to prevent Internet censorship. 
