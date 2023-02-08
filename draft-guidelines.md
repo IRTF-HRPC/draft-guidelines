@@ -257,14 +257,7 @@ informative:
      author:
         - ins: R. Hill 
      target: http://www.apig.ch/UNIGE%20Catalog.pdf
-
-   HTTPS-REL:
-     title: "Securing Web Sites Made Them Less Accessible"
-     date: 2018
-     author:
-        - ins: E. Meyer
-     target: https://meyerweb.com/eric/thoughts/2018/08/07/securing-sites-made-them-less-accessible/
-     
+  
    Kaye:
      title: The use of encryption and anonymity in digital communications
      date: 2015
@@ -304,6 +297,37 @@ informative:
         - ins: N. ten Oever
      target: https://datatracker.ietf.org/doc/html/draft-arkko-iab-internet-consolidation-02
 
+   FREAK:
+     title: Tracking the FREAK Attack
+     date: 2015
+     target: https://web.archive.org/web/20150304002021/https://freakattack.com/
+
+   Logjam:
+     title: Imperfect Forward Secrecy: How Diffie-Hellman Fails in Practice
+     date: 2015
+     author:
+        - ins: D. Adrian
+		- ins: K. Bhargavan
+		- ins: et al.
+     target: https://weakdh.org/imperfect-forward-secrecy-ccs15.pdf
+	 
+   hecate:
+     title: Hecate: Abuse Reporting in Secure Messengers with Sealed Sender
+     date: 2022
+     author:
+        - ins: R. Issa
+		- ins: N. Alhaddad
+		- ins: M. Varia
+     target: https://eprint.iacr.org/2021/1686
+	 
+   messenger-franking:
+     title: Message Franking via Committing Authenticated Encryption
+     date: 2017
+     author:
+        - ins: P. Grubbs
+		- ins: J. Lu
+		- ins: T. Ristenpart 
+     target: https://eprint.iacr.org/2017/664
 
 --- abstract
 
@@ -397,7 +421,7 @@ The end-to-end principle {{Saltzer}} holds that certain functions can and should
 Also considering the fact that network quality and conditions vary across geography and time, it is also important to design protocols such that they are reliable even on low bandwidth and high latency connections.
 
 Example:
-Encrypting connections, like done with HTTPS, can add a significant network overhead and consequently make web resources less accessible to those with low bandwidth and/or high latency connections. {{HTTPS-REL}} Encrypting traffic is a net positive for privacy and security, and thus protocol designers can acknowledge the tradeoffs of connectivity made by such decisions.
+Encrypting connections, like done with HTTPS, can prevent caching by intermediaries and possibly add a network overhead, making web resources less accessible to those with low bandwidth and/or high latency connections. However, encrypting traffic is a net positive for privacy and security, and thus protocol designers can acknowledge the tradeoffs of connectivity made by such decisions.
 
 Impacts:
 
@@ -415,10 +439,12 @@ Reliability and resiliency ensures that a protocol will execute its function con
 
 A system that is reliable degrades gracefully and will have a documented way to announce degradation. It will also have mechanisms to recover from failure gracefully, and if applicable, will allow for partial healing.
 
-It is important here to draw a distinction between random degradation and malicious degradation. Many current attacks against TLS {{RFC8446}}, for example, exploit TLS' ability to gracefully downgrade to non-secure cipher suites -- from a functional perspective, this is useful; from a security perspective, this can be disastrous. As with confidentiality, the growth of the Internet and fostering innovation in services depends on users having confidence and trust {{RFC3724}} in the network. For reliability, it is necessary that services notify the users if a delivery fails. In the case of real-time systems in addition to the reliable delivery the protocol needs to safeguard timeliness.
+It is important here to draw a distinction between random degradation and malicious degradation. Some older attacks against TLS, for example, exploited TLS' ability to gracefully downgrade to non-secure cipher suites {{FREAK}}{{Logjam}}-- from a functional perspective, this is useful; from a security perspective, this can be disastrous.
+
+For reliability, it is necessary that services notify the users if a delivery fails. In the case of real-time systems, in addition to the reliable delivery, the protocol needs to safeguard timeliness.
 
 Example:
-In the modern IP stack structure, a reliable transport layer requires an indication that transport processing has successfully completed, such as given by TCP's ACK message {{RFC0793}}, and not simply an indication from the IP layer that the packet arrived. Similarly, an application layer protocol may require an application-specific acknowledgment that contains, among other things, a status code indicating the disposition of the request (See {{RFC3724}}).
+In the modern IP stack structure, a reliable transport layer requires an indication that transport processing has successfully completed, such as given by TCP's ACK message {{RFC0793}}. Similarly, an application layer protocol may require an application-specific acknowledgment that contains, among other things, a status code indicating the disposition of the request (See {{RFC3724}}).
 
 Impacts:
 
@@ -458,7 +484,7 @@ Internationalization refers to the practice of making protocols, standards, and 
 
 Many protocols that handle text only handle one charset (US-ASCII), or leave the question of what coded character set and encoding are used up to local guesswork (which leads, of course, to interoperability problems). If multiple charsets are permitted, they must be explicitly identified {{RFC2277}}.  Adding non-ASCII text to a protocol allows the protocol to handle more scripts, hopefully representing users across the world.  In today's world, that is normally best accomplished by allowing Unicode encoded in UTF-8 only. 
 
-In the current IETF policy {{RFC2277}}, internationalization is aimed at user-facing strings, not protocol elements, such as the verbs used by some text-based protocols. (Do note that some strings are both content and protocol elements, such as identifiers.) Given the IETF's mission to make the Internet a global network of networks, {{RFC3935}} developers should ensure that protocols work with languages apart from English and character sets apart from Latin characters. It is therefore crucial that at the very least, the content carried by the protocol can be in any script, and that all scripts are treated equally.
+In current IETF practice {{RFC2277}}, internationalization is aimed at user-facing strings, not protocol elements, such as the verbs used by some text-based protocols. (Do note that some strings are both content and protocol elements, such as identifiers.) Given the IETF's mission to make the Internet a global network of networks, {{RFC3935}} developers should ensure that protocols work with languages apart from English and character sets apart from Latin characters. Protocols should carry content in any script, and all scripts should be treated equally.
 
 Example:
 See localization 
@@ -595,7 +621,7 @@ Alice wants to communicate with Bob.
 Alice sends data to Bob. 
 Corinne intercepts the data sent to Bob. 
 Corinne reads and alters the message to Bob. 
-Bob can see that the data did not come from Alice. 
+Bob is unable to verify whether that the data came from Alice. 
 
 Impacts:
 
@@ -794,6 +820,9 @@ Explanation: Providing access to remedy by states and corporations is a part of 
 Example:
 Adding personally identifiable information to data streams might help in identifying a violator of human rights and provide access to remedy, but this would disproportionally affect all users right to privacy, anonymous expression, and association.
 
+Example:
+There are some recent advances in enabling abuse detection in end-to-end encrypted messaging systems, which also carry some risk to users' privacy. {{messenger-franking}}{{hecate}}
+
 Impacts:
 
 - Right to remedy
@@ -819,7 +848,7 @@ Acknowledgements
 Thanks to:
 
 - Corinne Cath-Speth for work on {{RFC8280}}. 
-- Theresa Engelhard, Joe Hall, Avri Doria, Joey Salazar, Corinne Cath-Speth, Farzaneh Badii, Sandra Braman, Colin Perkins, John Curran, Eliot Lear, Mallory Knodel, Brian Trammell, Jane Coffin, and the hrpc list for reviews and suggestions.
+- Theresa Engelhard, Joe Hall, Avri Doria, Joey Salazar, Corinne Cath-Speth, Farzaneh Badii, Sandra Braman, Colin Perkins, John Curran, Eliot Lear, Mallory Knodel, Brian Trammell, Jane Coffin, Eric Rescorla and the hrpc list for reviews and suggestions.
 - Individuals who conducted human rights reviews for their work and feedback: Amelia Andersdotter, Beatrice Martini, Karan Saini and Shivan Kaul Sahib.
 
 Security Considerations
