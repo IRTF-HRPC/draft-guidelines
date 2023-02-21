@@ -454,7 +454,7 @@ Impacts:
 ## Content agnosticism
 
 Question(s):
-If your protocol impacts packet handling, does it use user data (packet data that is not included in the header)? Is it making decisions based on the payload of the packet? Does your protocol prioritize certain content or services over others in the routing process? Is the protocol transparent about the prioritization that is made (if any)? 
+If your protocol impacts packet handling, does it use user data (packet data that is not included in the header)? Is it making decisions based on the payload of the packet? Does your protocol enable the prioritization of certain content or services over others in the routing process? Is the protocol transparent about the prioritization that is made (if any)? 
 
 Explanation:
 Content agnosticism refers to the notion that network traffic is treated identically regardless of payload, with some exceptions where it comes to effective traffic handling, for instance where it comes to delay-tolerant or delay-sensitive packets, based on the header. If there is any prioritization based on the content or metadata of the protocol, the protocol should be transparent about such information and reasons thereof.
@@ -543,7 +543,7 @@ The Internet is characterized by heterogeneity on many levels: devices and nodes
 Heterogeneity support in protocols can thus enable a wide range of devices and (by extension) users to participate on the network.
 
 Example:
-Heterogeneity is inevitable and needs be supported by design. Multiple types of hardware must be allowed for (e.g., transmission speeds differing by at least 7 orders of magnitude, various computer word lengths, and hosts ranging from memory-starved microprocessors up to massively parallel supercomputers). Multiple types of application protocols must be allowed for, ranging from the simplest such as remote login up to the most complex such as commit protocols for distributed databases. {{RFC1958}}.
+Heterogeneity is inevitable and needs be supported by design. As far as possible, multiple types of hardware must be allowed for (e.g., transmission speeds differing by at least 7 orders of magnitude, various computer word lengths, and hosts ranging from memory-starved microprocessors up to massively parallel supercomputers). Multiple types of application protocols must be allowed for, ranging from the simplest such as remote login up to the most complex such as commit protocols for distributed databases. {{RFC1958}}.
 
 Impacts:
 
@@ -563,7 +563,7 @@ Adaptability and permissionless innovation can be used to shape information netw
 
 
 Example:
-WebRTC generates audio and/or video data. In order to ensure that WebRTC can be used in different locations by different parties, it is important that standard Javascript application programming interfaces (APIs) are developed to support applications from different voice service providers. Multiple parties will have similar capabilities, in order to ensure that all parties can build upon existing standards these need to be adaptable, and allow for permissionless innovation.
+WebRTC generates audio and/or video data. WebRTC can be used in different locations by different parties; WebRTC's standard application programming interfaces (APIs) are developed to support applications from different voice service providers. Multiple parties will have similar capabilities, in order to ensure that all parties can build upon existing standards these need to be adaptable, and allow for permissionless innovation.
 
 Impacts:
 
