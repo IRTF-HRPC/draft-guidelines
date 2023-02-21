@@ -303,30 +303,30 @@ informative:
      target: https://web.archive.org/web/20150304002021/https://freakattack.com/
 
    Logjam:
-     title: Imperfect Forward Secrecy: How Diffie-Hellman Fails in Practice
+     title: Imperfect Forward Secrecy, How Diffie-Hellman Fails in Practice
      date: 2015
      author:
         - ins: D. Adrian
-		- ins: K. Bhargavan
-		- ins: et al.
+        - ins: K. Bhargavan
+        - ins: et al.
      target: https://weakdh.org/imperfect-forward-secrecy-ccs15.pdf
-	 
+
    hecate:
-     title: Hecate: Abuse Reporting in Secure Messengers with Sealed Sender
+     title: Hecate, Abuse Reporting in Secure Messengers with Sealed Sender
      date: 2022
      author:
         - ins: R. Issa
-		- ins: N. Alhaddad
-		- ins: M. Varia
+        - ins: N. Alhaddad
+        - ins: M. Varia
      target: https://eprint.iacr.org/2021/1686
-	 
+
    messenger-franking:
      title: Message Franking via Committing Authenticated Encryption
      date: 2017
      author:
         - ins: P. Grubbs
-		- ins: J. Lu
-		- ins: T. Ristenpart 
+        - ins: J. Lu
+        - ins: T. Ristenpart 
      target: https://eprint.iacr.org/2017/664
 
 --- abstract
