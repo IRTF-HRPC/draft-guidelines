@@ -439,7 +439,7 @@ Reliability and resiliency ensures that a protocol will execute its function con
 
 A system that is reliable degrades gracefully and will have a documented way to announce degradation. It will also have mechanisms to recover from failure gracefully, and if applicable, will allow for partial healing.
 
-It is important here to draw a distinction between random degradation and malicious degradation. Some older attacks against previous version of TLS, for example, exploited TLS' ability to gracefully downgrade to non-secure cipher suites {{FREAK}}{{Logjam}}-- from a functional perspective, this is useful; from a security perspective, this can be disastrous.
+It is important here to draw a distinction between random degradation and malicious degradation. Some attacks against previous version of TLS, for example, exploited TLS' ability to gracefully downgrade to non-secure cipher suites {{FREAK}}{{Logjam}}-- from a functional perspective, this is useful; from a security perspective, this can be disastrous.
 
 For reliability, it is necessary that services notify the users if a delivery fails. In the case of real-time systems, in addition to the reliable delivery, the protocol needs to safeguard timeliness.
 
