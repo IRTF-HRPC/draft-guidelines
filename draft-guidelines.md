@@ -744,7 +744,9 @@ Explanation:
 Governments and service providers block or filter content or traffic, often without the knowledge of end-users. {{RFC7754}} See {{draft-irtf-pearg-censorship}} for a survey of censorship techniques employed across the world, which lays out protocol properties that have been exploited to censor access to information. Censorship resistance refers to the methods and measures to prevent Internet censorship. 
 
 Example:
-Identifiers of content exposed within a protocol might be used to facilitate censorship, as in the case of Application Layer based censorship, which affects protocols like HTTP. In HTTP, denial or restriction of access can be made apparent by the use of status code 451, which allows server operators to operate with greater transparency in circumstances where issues of law or public policy affect their operation {{RFC7725}}.
+Identifiers of content exposed within a protocol might be used to facilitate censorship. DNS queries, the "host" request header in an HTTP request, the Server Name Indication (SNI) in a Transport Layer Security (TLS) ClientHello are all examlpies of protocol elements that can travel in plaintext and be used by censors to identify what content a user is trying to access. {{draft-irtf-pearg-censorship}}
+
+Example: In HTTP, denial or restriction of access can be made apparent by the use of status code 451, which allows server operators to operate with greater transparency in circumstances where issues of law or public policy affect their operation {{RFC7725}}.
 
 If a protocol potentially enables censorship, protocol designers should strive towards creating error codes that capture different scenarios (blocked due to administrative policy, unavailable because of legal requirements, etc.) to minimize ambiguity for end-users.
 
