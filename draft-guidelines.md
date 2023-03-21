@@ -484,7 +484,7 @@ Internationalization refers to the practice of making protocols, standards, and 
 
 Many protocols that handle text only handle one charset (US-ASCII), or leave the question of what coded character set and encoding are used up to local guesswork (which leads, of course, to interoperability problems). If multiple charsets are permitted, they must be explicitly identified {{RFC2277}}.  Adding non-ASCII text to a protocol allows the protocol to handle more scripts, hopefully representing users across the world.  In today's world, that is normally best accomplished by allowing Unicode encoded in UTF-8 only. 
 
-In current IETF practice {{RFC2277}}, internationalization is aimed at user-facing strings, not protocol elements, such as the verbs used by some text-based protocols. (Do note that some strings are both content and protocol elements, such as identifiers.) Given the IETF's mission to make the Internet a global network of networks, {{RFC3935}} developers should ensure that protocols work with languages apart from English and character sets apart from Latin characters. Protocols should carry content in any script, and all scripts should be treated equally.
+In current IETF practice [RFC2277], internationalization is aimed at user-facing strings, not protocol elements, such as the verbs used by some text-based protocols. (Do note that some strings are both content and protocol elements, such as identifiers.)  Although this is reasonable practice for non-user visible elements, given the IETF's mission to make the Internet a global network of networks, [RFC3935] developers should provide full and equal support for all scripts and character sets in the user-facing features of protocols and for any content they carry.
 
 Example:
 See localization 
