@@ -1,7 +1,7 @@
 ---
 title: Guidelines for Human Rights Protocol and Architecture Considerations
 abbrev: Guidelines for HRPC
-docname: draft-irtf-hrpc-guidelines-18
+docname: draft-irtf-hrpc-guidelines-19
 category: info
 updates: 8280
 
@@ -197,16 +197,13 @@ informative:
         - ins: N. Feamster
      target: https://tools.ietf.org/html/draft-irtf-pearg-censorship
 
-   draft-pauly-dprive-oblivious-doh:
+   draft-ietf-ohai-ohttp:
      title: Oblivious DNS Over HTTPS
-     date: 2022
+     date: 2023
      author:
-        - ins: E. Kinnear
-        - ins: P. McManus
-        - ins: T. Pauly
-        - ins: T. Verma
+        - ins: M. Thomson
         - ins: C. A. Wood
-     target: https://tools.ietf.org/html/draft-pauly-dprive-oblivious-doh
+     target: https://datatracker.ietf.org/doc/html/draft-ietf-ohai-ohttp
 
    draft-zuniga-mac-address-randomization:
      title: MAC address randomization
@@ -700,10 +697,12 @@ Pseudonymity means using a pseudonym instead of one's "real" name. There are man
 
 Pseudonymity - the ability to use a persistent identifier not linked to one's offline identity - is an important feature for many end-users, as it allows them different degrees of disguised identity and privacy online. This can allow an enabling environment for users to exercise other rights, including freedom of expression and political participation, without fear or direct identification or discrimination.
 
+Example: In the development of the IPv6 protocol, it was discussed to embed a Media Access Control (MAC) address into unique IP addresses. This would make it possible for eavesdroppers and other information collectors to identify when different addresses used in different transactions actually correspond to the same node. This is why standardization efforts like Privacy Extensions for Stateless Address Autoconfiguration in IPv6 {{RFC4941}} and MAC address randomization {{draft-zuniga-mac-address-randomization}} have been pursued.
+
 Example:
 Generally, pseudonymous identifiers cannot be simply reverse engineered. Some early approaches took approaches such as simple hashing of IP addresses, but these could then be simply reversed by generating a hash for each potential IP address and comparing it to the pseudonym. 
 
-Example: There are also efforts for application layer protocols, like Oblivious DNS Over HTTPS, {{draft-pauly-dprive-oblivious-doh}} that can separate identifiers from requests.
+Example: There are also efforts for application layer protocols, like Oblivious HTTP, {{draft-ietf-ohai-ohttp/}}, that can separate identifiers from requests.
 
 Impacts:
 
@@ -738,7 +737,7 @@ Impacts:
 ## Censorship resistance
 
 Question(s):
-Can your protocol contribute to filtering? Could it be implemented to censor data or services? Could it be designed to ensure this doesn't happen? Does your protocol make it apparent or transparent when access to a resource is restricted and the reasons why it is restricted? Does your protocol introduce new identifiers or reuse existing identifiers (e.g., MAC addresses) that might be associated with persons or content?
+Can your protocol contribute to filtering? Could it be implemented to censor data or services? Could it be designed to ensure this doesn't happen? Does your protocol make it apparent or transparent when access to a resource is restricted and the reasons why it is restricted? Does your protocol introduce new identifiers or reuse existing identifiers that might be associated with content?
 
 Explanation:
 Governments and service providers block or filter content or traffic, often without the knowledge of end-users. {{RFC7754}} See {{draft-irtf-pearg-censorship}} for a survey of censorship techniques employed across the world, which lays out protocol properties that have been exploited to censor access to information. Censorship resistance refers to the methods and measures to prevent Internet censorship. 
@@ -749,9 +748,6 @@ Identifiers of content exposed within a protocol might be used to facilitate cen
 Example: In HTTP, denial or restriction of access can be made apparent by the use of status code 451, which allows server operators to operate with greater transparency in circumstances where issues of law or public policy affect their operation {{RFC7725}}.
 
 If a protocol potentially enables censorship, protocol designers should strive towards creating error codes that capture different scenarios (blocked due to administrative policy, unavailable because of legal requirements, etc.) to minimize ambiguity for end-users.
-
-In the development of the IPv6 protocol, it was discussed to embed a Media Access Control (MAC) address into unique IP addresses. This would make it possible for eavesdroppers and other information collectors to identify when different addresses used in different transactions actually correspond to the same node. This is why standardization efforts like Privacy Extensions for Stateless Address Autoconfiguration in IPv6 {{RFC4941}} and MAC address randomization {{draft-zuniga-mac-address-randomization}} have been pursued.
-
 
 Impacts:
 
