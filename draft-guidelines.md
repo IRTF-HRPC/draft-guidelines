@@ -702,7 +702,7 @@ Example: In the development of the IPv6 protocol, it was discussed to embed a Me
 Example:
 Generally, pseudonymous identifiers cannot be simply reverse engineered. Some early approaches took approaches such as simple hashing of IP addresses, but these could then be simply reversed by generating a hash for each potential IP address and comparing it to the pseudonym. 
 
-Example: There are also efforts for application layer protocols, like Oblivious HTTP, {{draft-ietf-ohai-ohttp/}}, that can separate identifiers from requests.
+Example: There are also efforts for application layer protocols, like Oblivious HTTP, {{draft-ietf-ohai-ohttp}}, that can separate identifiers from requests.
 
 Impacts:
 
