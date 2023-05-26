@@ -737,17 +737,21 @@ Impacts:
 ## Censorship resistance
 
 Question(s):
-Can your protocol contribute to filtering? Could it be implemented to censor data or services? Could it be designed to ensure this doesn't happen? Does your protocol make it apparent or transparent when access to a resource is restricted and the reasons why it is restricted? Does your protocol introduce new identifiers or reuse existing identifiers that might be associated with content?
+Does your protocol architecture facilitate censorship? Does it include "choke points" which are easy to use for censorship? Does it expose identifiers which can be used to selectively block certain kinds of trafic? Could it be designed to 2be more censorship resistant? Does your protocol make it apparent or transparent when access to a resource is restricted and the reasons why it is restricted?
 
 Explanation:
 Governments and service providers block or filter content or traffic, often without the knowledge of end-users. {{RFC7754}} See {{draft-irtf-pearg-censorship}} for a survey of censorship techniques employed across the world, which lays out protocol properties that have been exploited to censor access to information. Censorship resistance refers to the methods and measures to prevent Internet censorship. 
 
 Example:
-Identifiers of content exposed within a protocol might be used to facilitate censorship. DNS queries, the "host" request header in an HTTP request, the Server Name Indication (SNI) in a Transport Layer Security (TLS) ClientHello are all examlpies of protocol elements that can travel in plaintext and be used by censors to identify what content a user is trying to access. {{draft-irtf-pearg-censorship}}
+The current design of the Web has a number of architectural choke points where it is possible for censors to intervene. These include obtaining the control of the domain name itself, DNS blocking at either the protocol layer or at the resolver, IP address blocking, and blocking at the Web server. There has been extensive work on content distribution systems which are intended to be more censorship resistant, and some, such as BitTorrent, are in wide use, but these systems generally have inferior application-level and performance properties to the Web (e.g., they do not support active content on the server). It is an open research question whether it is possible to build something as powerful and performant as the Web that is also censorship resistant.
 
-Example: In HTTP, denial or restriction of access can be made apparent by the use of status code 451, which allows server operators to operate with greater transparency in circumstances where issues of law or public policy affect their operation {{RFC7725}}.
+Example:
+Identifiers of content exposed within a protocol might be used to facilitate censorship by allowing the censor to determine which traffic to block. DNS queries, the "host" request header in an HTTP request, the Server Name Indication (SNI) in a Transport Layer Security (TLS) ClientHello are all examples of protocol elements that can travel in plaintext and be used by censors to identify what content a user is trying to access. {{draft-irtf-pearg-censorship}}. Protocol mechanisms such as Encrypted Client Hello {{?I-D.ietf-tls-esni}} or DNS over HTTPS {{RFC8484}} that encrypt metadata provide some level of resistance to this type of protocol inspection. Full traffic encryption systems such as Tor [https://torproject.org] can also be used by people in jurisdictions where content is censored to access resources located in other jurisdictions.
 
-If a protocol potentially enables censorship, protocol designers should strive towards creating error codes that capture different scenarios (blocked due to administrative policy, unavailable because of legal requirements, etc.) to minimize ambiguity for end-users.
+Example: As noted above, one way to censor Web traffic is to require the server to block it. In HTTP, denial or restriction of access can be made apparent by the use of status code 451, which allows server operators to operate with greater transparency in circumstances where issues of law or public policy affect their operation {{RFC7725}}.
+
+If a protocol potentially enables censorship, protocol designers should strive towards creating error codes that capture different scenarios (blocked due to administrative policy, unavailable because of legal requirements, etc.) to 
+minimize ambiguity for end-users.
 
 Impacts:
 
