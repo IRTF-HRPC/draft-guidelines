@@ -326,6 +326,19 @@ informative:
         - ins: T. Ristenpart 
      target: https://eprint.iacr.org/2017/664
 
+   https-interception:
+     title: The Security Impact of HTTPS Interception
+     date: 2017
+     author: 
+        - ins: Z. Durumeric
+        - ins: Z. Ma
+        - ins: D. Springall
+        - ins: R. Barnes
+        - ins: N. Sullivan
+        - ins: E. Bursztein
+        - ins: M. Bailey
+        - ins: J. Halderman
+        - ins: V. Paxson
 --- abstract
 
 This document sets guidelines for human rights considerations for developers working on network protocols and architectures, similar to the work done on the guidelines for privacy considerations {{RFC6973}}. This is an updated version of the guidelines for human rights considerations in {{RFC8280}}. 
@@ -404,21 +417,32 @@ In considering these questions, authors will need to be aware of the potential o
 Also note that while the section uses the word, 'protocol', the principles identified in these questions may be applicable to other types of solutions (extensions to existing protocols, architecture for solutions to specific problems, etc.).
 
 
-## Connectivity
-
+## Intermediaries
 Question(s):
-Does your protocol add application-specific functions to intermediary nodes? Could this functionality be added to end nodes instead of intermediary nodes?
-
-Is your protocol optimized for low bandwidth and high latency connections? Could your protocol also be developed in a stateless manner?
-
+Does your protocol depend on or allow for protocol-specific functions at intermediary nodes?
 
 Explanation:
-The end-to-end principle {{Saltzer}} holds that certain functions can and should be performed at 'ends' of the network. {{RFC1958}} states "that in very general terms, the community believes that the goal is connectivity [...] and the intelligence is end to end rather than hidden in the network.” Generally speaking, it is easier to attain reliability of data transmissions with computation at endpoints rather than at intermediary nodes. 
+The end-to-end principle {{Saltzer}} holds that certain functions can and should be performed at 'ends' of the network. {{RFC1958}} states "that in very general terms, the community believes that the goal is connectivity [...] and the intelligence is end to end rather than hidden in the network.” When a protocol exchange includes both endpoints and an intermediary, there are new opportunities for failure, especially when the intermediary is not under control of either endpoint, or even largely invisible to it, as, for instance, in intercepting HTTPS proxies {{https-interception}}. This pattern also contributes to ossification, because the intermediaries may impose protocol restrictions -- sometimes in violation of the specification -- that prevent the endpoints from using more modern protocols, as described in Section 9.3 of {{RFC8446}}. 
+
+Note that intermediaries are distinct from services: in the former case the third party element is part of the protocol exchange, whereas in the latter the endpoints communicate explicitly with the service. The client/server pattern provides clearer separation of responsibilities between elements than having an intermediary. However, even in client/server systems, it is often good practice to provide for end-to-end encryption between endpoints for protocol elements which are outside of the scope of the service, as in the design of MLS {{I-D.ietf-mls-protocol}}.
+
+
+Example:
+Encryption between the endpoints can be used to protect the protocol from interference by intermediaries. The encryption of transport layer information in QUIC {{RFC9000}} and of the TLS Server Name Indication field {{I-D.ietf-tls-esni}} are examples of this practice. One consequence of this is to limit the extent to which network operators can inspect traffic, requiring them to have control of the endpoints in order to monitor their behavior.
+
+
+Impacts:
+
+- Right to freedom of expression
+- Right to freedom of assembly and association
+
+
+## Connectivity
+Questions(s):
+Is your protocol optimized for low bandwidth and high latency connections? Could your protocol also be developed in a stateless manner?
 
 Also considering the fact that network quality and conditions vary across geography and time, it is also important to design protocols such that they are reliable even on low bandwidth and high latency connections.
 
-Example:
-Encrypting connections, like done with HTTPS, can prevent caching by intermediaries and possibly add a network overhead, making web resources less accessible to those with low bandwidth and/or high latency connections. However, encrypting traffic is a net positive for privacy and security, and thus protocol designers can acknowledge the tradeoffs of connectivity made by such decisions.
 
 Impacts:
 
