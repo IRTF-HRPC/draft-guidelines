@@ -575,7 +575,7 @@ Impacts:
 ## Adaptability
 
 Question(s):
-Is your protocol written in such a way that it would be easy for other protocols to be developed on top of it, or to interact with it? Does your protocol impact permissionless innovation? (See Open Standards)
+Question: Is your protocol written in a modular fashion and does it facilitate or hamper extensibility? In this sense, does your protocol impact permissionless innovation? (See Open Standards)
 
 Explanation:
 Adaptability is closely interrelated with permissionless innovation: both maintain the freedom and ability to freely create and deploy new protocols on top of the communications constructs that currently exist. It is at the heart of the Internet as we know it, and to maintain its fundamentally open nature, we need to be mindful of the impact of protocols on maintaining or reducing permissionless innovation to ensure the Internet can continue to develop.
