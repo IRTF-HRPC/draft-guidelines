@@ -786,7 +786,7 @@ Impacts:
 
 Question(s): Are the intended and forseen effects of your protocol documented and easily comprehensible?
 
-Explanation: Certain technical choices may have unintended consequences.
+Explanation: Certain technical choices may have unintended consequences. Have you described the central use case(s) for your protocol with a clear description of expected behavior and how it may, or may not, impact other protocols, implementations, user expectations, or behavior? Have you reviewed other protocols that solve similar problems, or make use of similar mechanisms, to see if there are lessons that can be learnt from their use and misuse?
 
 Example: Lack of authenticity may lead to lack of integrity and negative externalities, of which spam is an example. Lack of data that could be used for billing and accounting can lead to so-called "free" arrangements which obscure the actual costs and distribution of the costs, for example the barter arrangements that are commonly used for Internet interconnection; and the commercial exploitation of personal data for targeted advertising which is the most common funding model for the so-called "free" services such as search engines and social networks. Unexpected outcomes might not be technical, but rather architectural, social or economic. Therefore it is of importance to document the intended outcomes and other possible outcomes that have been considered.
 
