@@ -334,6 +334,20 @@ informative:
         - ins: A. Narayanan
      target: https://freedom-to-tinker.com/2018/04/09/four-cents-to-deanonymize-companies-reverse-hashed-email-addresses/
 
+   https-interception:
+     title: The Security Impact of HTTPS Interception
+     date: 2017
+     author: 
+        - ins: Z. Durumeric
+        - ins: Z. Ma
+        - ins: D. Springall
+        - ins: R. Barnes
+        - ins: N. Sullivan
+        - ins: E. Bursztein
+        - ins: M. Bailey
+        - ins: J. Halderman
+        - ins: V. Paxson
+
 --- abstract
 
 This document sets guidelines for human rights considerations for developers working on network protocols and architectures, similar to the work done on the guidelines for privacy considerations {{RFC6973}}. This is an updated version of the guidelines for human rights considerations in {{RFC8280}}. 
@@ -412,21 +426,32 @@ In considering these questions, authors will need to be aware of the potential o
 Also note that while the section uses the word, 'protocol', the principles identified in these questions may be applicable to other types of solutions (extensions to existing protocols, architecture for solutions to specific problems, etc.).
 
 
-## Connectivity
-
+## Intermediaries
 Question(s):
-Does your protocol add application-specific functions to intermediary nodes? Could this functionality be added to end nodes instead of intermediary nodes?
-
-Is your protocol optimized for low bandwidth and high latency connections? Could your protocol also be developed in a stateless manner?
-
+Does your protocol depend on or allow for protocol-specific functions at intermediary nodes?
 
 Explanation:
-The end-to-end principle {{Saltzer}} holds that certain functions can and should be performed at 'ends' of the network. {{RFC1958}} states "that in very general terms, the community believes that the goal is connectivity [...] and the intelligence is end to end rather than hidden in the network.” Generally speaking, it is easier to attain reliability of data transmissions with computation at endpoints rather than at intermediary nodes. 
+The end-to-end principle {{Saltzer}} holds that certain functions can and should be performed at 'ends' of the network. {{RFC1958}} states "that in very general terms, the community believes that the goal is connectivity [...] and the intelligence is end to end rather than hidden in the network.” When a protocol exchange includes both endpoints and an intermediary, there are new opportunities for failure, especially when the intermediary is not under control of either endpoint, or even largely invisible to it, as, for instance, in intercepting HTTPS proxies {{https-interception}}. This pattern also contributes to ossification, because the intermediaries may impose protocol restrictions -- sometimes in violation of the specification -- that prevent the endpoints from using more modern protocols, as described in Section 9.3 of {{RFC8446}}. 
+
+Note that intermediaries are distinct from services: in the former case the third party element is part of the protocol exchange, whereas in the latter the endpoints communicate explicitly with the service. The client/server pattern provides clearer separation of responsibilities between elements than having an intermediary. However, even in client/server systems, it is often good practice to provide for end-to-end encryption between endpoints for protocol elements which are outside of the scope of the service, as in the design of MLS {{I-D.ietf-mls-protocol}}.
+
+
+Example:
+Encryption between the endpoints can be used to protect the protocol from interference by intermediaries. The encryption of transport layer information in QUIC {{RFC9000}} and of the TLS Server Name Indication field {{I-D.ietf-tls-esni}} are examples of this practice. One consequence of this is to limit the extent to which network operators can inspect traffic, requiring them to have control of the endpoints in order to monitor their behavior.
+
+
+Impacts:
+
+- Right to freedom of expression
+- Right to freedom of assembly and association
+
+
+## Connectivity
+Questions(s):
+Is your protocol optimized for low bandwidth and high latency connections? Could your protocol also be developed in a stateless manner?
 
 Also considering the fact that network quality and conditions vary across geography and time, it is also important to design protocols such that they are reliable even on low bandwidth and high latency connections.
 
-Example:
-Encrypting connections, like done with HTTPS, can prevent caching by intermediaries and possibly add a network overhead, making web resources less accessible to those with low bandwidth and/or high latency connections. However, encrypting traffic is a net positive for privacy and security, and thus protocol designers can acknowledge the tradeoffs of connectivity made by such decisions.
 
 Impacts:
 
@@ -559,7 +584,7 @@ Impacts:
 ## Adaptability
 
 Question(s):
-Is your protocol written in such a way that it would be easy for other protocols to be developed on top of it, or to interact with it? Does your protocol impact permissionless innovation? (See Open Standards)
+Question: Is your protocol written in a modular fashion and does it facilitate or hamper extensibility? In this sense, does your protocol impact permissionless innovation? (See Open Standards)
 
 Explanation:
 Adaptability is closely interrelated with permissionless innovation: both maintain the freedom and ability to freely create and deploy new protocols on top of the communications constructs that currently exist. It is at the heart of the Internet as we know it, and to maintain its fundamentally open nature, we need to be mindful of the impact of protocols on maintaining or reducing permissionless innovation to ensure the Internet can continue to develop.
@@ -791,17 +816,18 @@ the use of third party cookies in order to protect user privacy.
 ## Censorship resistance
 
 Question(s):
-Can your protocol contribute to filtering? Could it be implemented to censor data or services? Could it be designed to ensure this doesn't happen? Does your protocol make it apparent or transparent when access to a resource is restricted and the reasons why it is restricted? Does your protocol introduce new identifiers or reuse existing identifiers that might be associated with content?
+Does your protocol architecture facilitate censorship? Does it include "choke points" which are easy to use for censorship? Does it expose identifiers which can be used to selectively block certain kinds of trafic? Could it be designed to be more censorship resistant? Does your protocol make it apparent or transparent when access to a resource is restricted and the reasons why it is restricted?
 
 Explanation:
 Governments and service providers block or filter content or traffic, often without the knowledge of end-users. {{RFC7754}} See {{draft-irtf-pearg-censorship}} for a survey of censorship techniques employed across the world, which lays out protocol properties that have been exploited to censor access to information. Censorship resistance refers to the methods and measures to prevent Internet censorship. 
 
 Example:
-Identifiers of content exposed within a protocol might be used to facilitate censorship. DNS queries, the "host" request header in an HTTP request, the Server Name Indication (SNI) in a Transport Layer Security (TLS) ClientHello are all examlpies of protocol elements that can travel in plaintext and be used by censors to identify what content a user is trying to access. {{draft-irtf-pearg-censorship}}
+The current design of the Web has a number of architectural choke points where it is possible for censors to intervene. These include obtaining the control of the domain name itself, DNS blocking at either the protocol layer or at the resolver, IP address blocking, and blocking at the Web server. There has been extensive work on content distribution systems which are intended to be more censorship resistant, and some, such as BitTorrent, are in wide use, but these systems may have inferior reliability and performance compared to the Web (e.g., they do not support active content on the server). 
 
-Example: In HTTP, denial or restriction of access can be made apparent by the use of status code 451, which allows server operators to operate with greater transparency in circumstances where issues of law or public policy affect their operation {{RFC7725}}.
+Example:
+Identifiers of content exposed within a protocol might be used to facilitate censorship by allowing the censor to determine which traffic to block. DNS queries, the "host" request header in an HTTP request, the Server Name Indication (SNI) in a Transport Layer Security (TLS) ClientHello are all examples of protocol elements that can travel in plaintext and be used by censors to identify what content a user is trying to access. {{draft-irtf-pearg-censorship}}. Protocol mechanisms such as Encrypted Client Hello {{?I-D.ietf-tls-esni}} or DNS over HTTPS {{RFC8484}} that encrypt metadata provide some level of resistance to this type of protocol inspection. Full traffic encryption systems such as Tor [https://torproject.org] can also be used by people access otherwise censored resources.
 
-If a protocol potentially enables censorship, protocol designers should strive towards creating error codes that capture different scenarios (blocked due to administrative policy, unavailable because of legal requirements, etc.) to minimize ambiguity for end-users.
+Example: As noted above, one way to censor Web traffic is to require the server to block it or require internet service providers to block requests to the server. In HTTP, denial or restriction of access can be made apparent by the use of status code 451, which allows server operators and intermediaries to operate with greater transparency in circumstances where issues of law or public policy affect their operation {{RFC7725}}. If a protocol potentially enables censorship, protocol designers should strive towards creating error codes that capture different scenarios (blocked due to administrative policy, unavailable because of legal requirements, etc.) to minimize ambiguity for end-users.
 
 Impacts:
 
@@ -815,7 +841,7 @@ Impacts:
 
 Question(s): Are the intended and forseen effects of your protocol documented and easily comprehensible?
 
-Explanation: Certain technical choices may have unintended consequences.
+Explanation: Certain technical choices may have unintended consequences. Have you described the central use case(s) for your protocol with a clear description of expected behavior and how it may, or may not, impact other protocols, implementations, user expectations, or behavior? Have you reviewed other protocols that solve similar problems, or make use of similar mechanisms, to see if there are lessons that can be learnt from their use and misuse?
 
 Example: Lack of authenticity may lead to lack of integrity and negative externalities, of which spam is an example. Lack of data that could be used for billing and accounting can lead to so-called "free" arrangements which obscure the actual costs and distribution of the costs, for example the barter arrangements that are commonly used for Internet interconnection; and the commercial exploitation of personal data for targeted advertising which is the most common funding model for the so-called "free" services such as search engines and social networks. Unexpected outcomes might not be technical, but rather architectural, social or economic. Therefore it is of importance to document the intended outcomes and other possible outcomes that have been considered.
 
@@ -870,7 +896,7 @@ Question(s): Can your protocol facilitate a negatively impacted party's right to
 Explanation: Providing access to remedy by states and corporations is a part of the UN Guiding Principles on Business and Human Rights {{UNGP}}. Access to remedy may help victims of human rights violations in seeking justice, or allow law enforcement agencies to identify a possible violator. However, mechanisms in protocols that try to enable 'attribution' to individuals will impede the exercise of the right to privacy. The former UN Special Rapporteur for Freedom of Expression has also argued that anonymity is an inherent part of freedom of expression {{Kaye}}. Considering the potential adverse impact of attribution on the right to privacy and freedom of expression, enabling attribution on an individual level is most likely not consistent with human rights. 
 
 Example:
-Adding personally identifiable information to data streams might help in identifying a violator of human rights and provide access to remedy, but this would disproportionally affect all users right to privacy, anonymous expression, and association.
+Adding personally identifiable information to data streams beyond that necessary to enable the system to function might help in identifying a violator of human rights and provide access to remedy, but this would disproportionally affect all users right to privacy, anonymous expression, and association.
 
 Example:
 There are some recent advances in enabling abuse detection in end-to-end encrypted messaging systems, which also carry some risk to users' privacy. {{messenger-franking}}{{hecate}}
