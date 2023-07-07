@@ -841,7 +841,7 @@ Question(s): Can your protocol facilitate a negatively impacted party's right to
 Explanation: Providing access to remedy by states and corporations is a part of the UN Guiding Principles on Business and Human Rights {{UNGP}}. Access to remedy may help victims of human rights violations in seeking justice, or allow law enforcement agencies to identify a possible violator. However, mechanisms in protocols that try to enable 'attribution' to individuals will impede the exercise of the right to privacy. The former UN Special Rapporteur for Freedom of Expression has also argued that anonymity is an inherent part of freedom of expression {{Kaye}}. Considering the potential adverse impact of attribution on the right to privacy and freedom of expression, enabling attribution on an individual level is most likely not consistent with human rights. 
 
 Example:
-Adding personally identifiable information to data streams might help in identifying a violator of human rights and provide access to remedy, but this would disproportionally affect all users right to privacy, anonymous expression, and association.
+Adding personally identifiable information to data streams beyond that necessary to enable the system to function might help in identifying a violator of human rights and provide access to remedy, but this would disproportionally affect all users right to privacy, anonymous expression, and association.
 
 Example:
 There are some recent advances in enabling abuse detection in end-to-end encrypted messaging systems, which also carry some risk to users' privacy. {{messenger-franking}}{{hecate}}
