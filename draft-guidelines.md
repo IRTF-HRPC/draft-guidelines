@@ -326,6 +326,14 @@ informative:
         - ins: T. Ristenpart 
      target: https://eprint.iacr.org/2017/664
 
+   email-hashing:
+     title: 'Four cents to deanonymize: Companies reverse hashed email addresses'
+     author:
+        - ins: G. Acar
+        - ins: S. Englehardt
+        - ins: A. Narayanan
+     target: https://freedom-to-tinker.com/2018/04/09/four-cents-to-deanonymize-companies-reverse-hashed-email-addresses/
+
    https-interception:
      title: The Security Impact of HTTPS Interception
      date: 2017
@@ -339,6 +347,7 @@ informative:
         - ins: M. Bailey
         - ins: J. Halderman
         - ins: V. Paxson
+
 --- abstract
 
 This document sets guidelines for human rights considerations for developers working on network protocols and architectures, similar to the work done on the guidelines for privacy considerations {{RFC6973}}. This is an updated version of the guidelines for human rights considerations in {{RFC8280}}. 
@@ -711,22 +720,47 @@ Impacts:
 - Right to privacy
 - Right to non-discrimination
 
-## Pseudonymity
+## Anonymity and Pseudonymity
 
-Question(s):
-Does the protocol collect personally derived data? Does the protocol generate or process anything that can be, or be tightly correlated with, personally identifiable information? Does the protocol utilize data that is personally-derived, i.e. derived from the interaction of a single person, or their device or address? If yes, can the protocol be implemented in a way that does not rely on personally identifiable information? If not, does the specification describe how any such data be handled? Have you considered the Privacy Considerations for Internet Protocols {{RFC6973}}, especially section 6.1.2?
+Question(s): Does your protocol make use of identifiers? Are these
+identifiers persistent?  Are they used across multiple contexts? Is it
+possible for the user to reset or rotate them without negatively
+impacting the operation fo the protocol? Are they visible to others
+besides the protocol endpoints? Are they tied to real-world
+identities? Have you considered the Privacy Considerations for
+Internet Protocols {{RFC6973}}, especially section 6.1.2?
 
 Explanation:
-Pseudonymity means using a pseudonym instead of one's "real" name. There are many reasons for users to use pseudonyms, for instance to: hide their gender, protect themselves against harassment, protect their families' privacy, frankly discuss sexuality, or develop an artistic or journalistic persona without repercussions from an employer, (potential) customers, or social surrounding. {{geekfeminism}} The difference between anonymity and pseudonymity is that a pseudonym often is persistent. "Pseudonymity is strengthened when less personal data can be linked to the pseudonym; when the same pseudonym is used less often and across fewer contexts; and when independently chosen pseudonyms are more frequently used for new actions (making them, from an observer's or attacker's perspective, unlinkable)." {{RFC6973}}
+Most protocols depend on the use of some kind of identifier in order to correlate
+activity over time and space. For instance:
 
-Pseudonymity - the ability to use a persistent identifier not linked to one's offline identity - is an important feature for many end-users, as it allows them different degrees of disguised identity and privacy online. This can allow an enabling environment for users to exercise other rights, including freedom of expression and political participation, without fear or direct identification or discrimination.
+* IP addresses are used as an identity for the source and destination for
+  IP datagrams.
 
-Example: In the development of the IPv6 protocol, it was discussed to embed a Media Access Control (MAC) address into unique IP addresses. This would make it possible for eavesdroppers and other information collectors to identify when different addresses used in different transactions actually correspond to the same node. This is why standardization efforts like Privacy Extensions for Stateless Address Autoconfiguration in IPv6 {{RFC4941}} and MAC address randomization {{draft-zuniga-mac-address-randomization}} have been pursued.
+* QUIC connection identifiers are used to correlate packets belonging to
+  the same connection.
 
-Example:
-Generally, pseudonymous identifiers cannot be simply reverse engineered. Some early approaches took approaches such as simple hashing of IP addresses, but these could then be simply reversed by generating a hash for each potential IP address and comparing it to the pseudonym. 
+* HTTP uses cookies to correlate multiple HTTP requests from the same
+  client.
 
-Example: There are also efforts for application layer protocols, like Oblivious HTTP, {{draft-ietf-ohai-ohttp}}, that can separate identifiers from requests.
+* Email uses email addresses of the form <example@example.com> to identify
+  senders and receivers.
+
+In general, these identifiers serve a necessary function for protocol operations,
+by allowing them to maintain continuity. However, they can also create privacy
+risks. There are two major ways in which those risks manifest:
+
+* The identifier may itself reveal the user's identity in some way or be
+  tied to an identifier which does, as is the case when E.164 (telephone)
+  numbers are used as identifiers for instant messaging systems.
+
+* While the identifier may not reveal the user's identity, it may make
+  it possible to link enough of a user's behavior to threaten their
+  privacy, as is the case with HTTP cookies.
+
+Because identifiers are necessary for protocol operation, true anonymity
+is very difficult to achieve, but there are practices which promote
+user privacy even when identifiers are used.
 
 Impacts:
 
@@ -736,26 +770,47 @@ Impacts:
 - Right to freedom of assembly and association
 
 
-## Anonymity
+### Pseudonymity
 
-Question(s): Does your protocol make use of persistent identifiers? Can it be done without them? Did you have a look at the Privacy Considerations for Internet Protocols {{RFC6973}}, especially section 6.1.1 of that document?
+In general, user privacy is better preserved when identifiers are
+pseudonymous (not tied to a user's real-world identity).
 
-Explanation: Anonymity refers to the condition of an identity being unknown or concealed {{RFC4949}}. Even though full anonymity is hard to achieve, it is a non-binary concept. Making pervasive monitoring and tracking harder is important for many users as well as for the IETF {{RFC7258}}. Achieving a higher level of anonymity is an important feature for many end-users, as it allows them different degrees of privacy online. Anonymity is an inherent part of the right to freedom of opinion and expression and the right to privacy. Avoid adding identifiers, options or configurations that create or might lead to patterns or regularities that are not explicitly required by the protocol. 
+Example: In the development of the IPv6 protocol, it was discussed to
+embed a Media Access Control (MAC) address into unique IP
+addresses. This would make it possible for eavesdroppers and other
+information collectors to identify when different addresses used in
+different transactions actually correspond to the same node. This is
+why standardization efforts like Privacy Extensions for Stateless
+Address Autoconfiguration in IPv6 {{RFC4941}} and MAC address
+randomization {{draft-zuniga-mac-address-randomization}} have been
+pursued.
 
-If your protocol collects data and seeks to distribute it to more entities than the originally-intended recipients (see {{RFC6235}} as an example), you should anonymize the data, but keep in mind that "anonymizing" data is notoriously hard. For example, just dropping the last byte of an IP address does not "anonymize" data. 
+Note that it is often attractive to try to create a pseudonym from
+a persistent identifier. This can be very difficult to do correctly
+in a way that does not allow for recovering the persistent identifiers.
 
-If your protocol allows for identity management, there should be a clear barrier between the identities to ensure that they cannot (easily) be associated with each other.
+Example: A common practice in Web tracking is to "encrypt" email
+addresses by hashing them, thus allegedly making them
+"non-personally identifying". However, because hash functions
+are public operations, it is possible to dictionary search candidate
+email addresses and recover the original address {{email-hashing}}.
 
-A protocol that uses data that could help identify a sender (items of interest) should be protected from third parties. For instance, if one wants to hide the source/destination IP addresses of a packet, the use of IPsec in tunneling mode (e.g., inside a virtual private network) can be helpful to protect from third parties likely to eavesdrop packets exchanged between the tunnel endpoints.  
 
-Example:  An example is Dynamic Host Configuration Protocol (DHCP) where sending a persistent identifier as the client name was not mandatory but, in practice, done by many implementations, before {{RFC7844}}.
+### Unlinkability
 
-Impacts:
+Even true pseudonymous identifiers can present a privacy risk if they
+are used across a wide enough scope. User privacy is better preserved
+if identifiers have limited scope both in time and space.
 
-- Right to non-discrimination
-- Right to political participation
-- Right to freedom of assembly and association
-- Right to security
+Example: An example is Dynamic Host Configuration Protocol (DHCP)
+where sending a persistent identifier as the client name was not
+mandatory but, in practice, done by many implementations, before
+{{RFC7844}}.
+
+Example: Third party cookies in HTTP allow trackers to correlate
+HTTP traffic across sites.  This is the foundation of a whole
+ecosystem of Web tracking. Increasingly, Web browsers are restricting
+the use of third party cookies in order to protect user privacy.
 
 
 ## Censorship resistance
