@@ -572,7 +572,7 @@ The Internet is characterized by heterogeneity on many levels: devices and nodes
 Heterogeneity support in protocols can thus enable a wide range of devices and (by extension) users to participate on the network.
 
 Example:
-Heterogeneity is inevitable and needs be supported by design. As far as possible, multiple types of hardware must be allowed for (e.g., transmission speeds differing by at least 7 orders of magnitude, various computer word lengths, and hosts ranging from memory-starved microprocessors up to massively parallel supercomputers). Multiple types of application protocols must be allowed for, ranging from the simplest such as remote login up to the most complex such as commit protocols for distributed databases. {{RFC1958}}.
+Example: Heterogeneity significantly contributed to the success of the internet architecture {{Zittrain}}. Niels Bohr famously said: "Prediction is very difficult, especially if it’s about the future", this also holds true for future uses of the internet architecture and infrastructure. Therefore, as a rule of thumb it is important to - as far as possible - design your protocol for different devices and uses, especially at lower layers of the stack. However, if you choose not to do this, it could be relevant to document the reasoning for that.
 
 Impacts:
 
