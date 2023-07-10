@@ -572,7 +572,7 @@ The Internet is characterized by heterogeneity on many levels: devices and nodes
 Heterogeneity support in protocols can thus enable a wide range of devices and (by extension) users to participate on the network.
 
 Example:
-Example: Heterogeneity significantly contributed to the success of the internet architecture {{Zittrain}}. Niels Bohr famously said: "Prediction is very difficult, especially if it’s about the future", this also holds true for future uses of the internet architecture and infrastructure. Therefore, as a rule of thumb it is important to - as far as possible - design your protocol for different devices and uses, especially at lower layers of the stack. However, if you choose not to do this, it could be relevant to document the reasoning for that.
+Heterogeneity significantly contributed to the success of the internet architecture {{Zittrain}}. Niels Bohr famously said: "Prediction is very difficult, especially if it’s about the future", this also holds true for future uses of the internet architecture and infrastructure. Therefore, as a rule of thumb it is important to - as far as possible - design your protocol for different devices and uses, especially at lower layers of the stack. However, if you choose not to do this, it could be relevant to document the reasoning for that.
 
 Impacts:
 
