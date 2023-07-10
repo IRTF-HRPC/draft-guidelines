@@ -67,6 +67,7 @@ informative:
    RFC8980:
    RFC3935:
    RFC7754:
+   RFC9000:
    RFC9071:
 
    UDHR:
@@ -347,6 +348,18 @@ informative:
         - ins: M. Bailey
         - ins: J. Halderman
         - ins: V. Paxson
+        
+   I-D.ietf-mls-protocol:
+     title: The Messaging Layer Security (MLS) Protocol
+     date: 2023
+     author:
+        - ins: R. Barnes
+        - ins: B. Beurdouche
+        - ins: R. Robert
+        - ins: J. Millican
+        - ins: E. Omara
+        - ins: K. Cohn-Gordon
+     target: https://datatracker.ietf.org/doc/draft-ietf-mls-protocol/
 
 --- abstract
 
