@@ -497,7 +497,7 @@ Impacts:
 ## Content agnosticism
 
 Question(s): 
-If your protocol impacts packet handling, does it use user data (packet data that is not included in the header)? Is it making decisions based on the payload of the packet? Does your protocol enable the prioritization of certain content or services over others in the routing process? Is the prioritization that is made auditable for negative impacts on net neutrality?
+Does your protocol include plaintext elements, either in the payload or headers, that can be used for differential treatment? Is there a way minimise leaking of such data over the network? If not, is there a way for deployments of the protocol to make the differential treatment (including prioritisation of certain traffic), if any, auditable for negative impacts on net neutrality?
 
 Explanation: 
 Content agnosticism refers to the notion that network traffic is treated identically regardless of payload, with some exceptions where it comes to effective traffic handling, for instance where it comes to delay-tolerant or delay-sensitive packets, based on the header. If there is any prioritization based on the content or metadata of the protocol, the protocol should be transparent about how it does so, for instance by adding flow labels (in the case of IPv6) or the six bits available in the Differentiated Services Code Point (DSCP) (in the case of DiffServ).
