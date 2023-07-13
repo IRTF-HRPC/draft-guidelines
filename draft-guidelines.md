@@ -934,7 +934,7 @@ Acknowledgements
 Thanks to:
 
 - Corinne Cath-Speth for work on {{RFC8280}}. 
-- Reese Enghardt, Joe Hall, Avri Doria, Joey Salazar, Corinne Cath-Speth, Farzaneh Badii, Sandra Braman, Colin Perkins, John Curran, Eliot Lear, Mallory Knodel, Brian Trammell, Jane Coffin, Eric Rescorla and the hrpc list for reviews and suggestions.
+- Reese Enghardt, Joe Hall, Avri Doria, Joey Salazar, Corinne Cath-Speth, Farzaneh Badii, Sandra Braman, Colin Perkins, John Curran, Eliot Lear, Mallory Knodel, Brian Trammell, Jane Coffin, Eric Rescorla, Sofía Celi and the hrpc list for reviews and suggestions.
 - Individuals who conducted human rights reviews for their work and feedback: Amelia Andersdotter, Shane Kerr, Beatrice Martini, Karan Saini, and Shivan Kaul Sahib.
 
 Security Considerations
