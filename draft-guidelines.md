@@ -494,17 +494,13 @@ Impacts:
 - Right to freedom of expression
 - Right to security
 
-## Content agnosticism
+## Content signals
 
 Question(s): 
-Does your protocol include plaintext elements, either in the payload or headers, that can be used for differential treatment? Is there a way minimise leaking of such data over the network? If not, is there a way for deployments of the protocol to make the differential treatment (including prioritisation of certain traffic), if any, auditable for negative impacts on net neutrality?
-
-Explanation: 
-Content agnosticism refers to the notion that network traffic is treated identically regardless of payload, with some exceptions where it comes to effective traffic handling, for instance where it comes to delay-tolerant or delay-sensitive packets, based on the header. If there is any prioritization based on the content or metadata of the protocol, the protocol should be transparent about how it does so, for instance by adding flow labels (in the case of IPv6) or the six bits available in the Differentiated Services Code Point (DSCP) (in the case of DiffServ).
+Does your protocol include explicit plaintext elements, either in the payload or headers, that can be used for differential treatment? Is there a way minimise leaking of such data to network intermediaries? If not, is there a way for deployments of the protocol to make the differential treatment (including prioritisation of certain traffic), if any, auditable for negative impacts on net neutrality?
 
 Example: 
-Content agnosticism prevents payload-based discrimination against packets. This is important because changes to this principle can lead to a two-tiered Internet, where certain packets are prioritized over others on the basis of their content, their origin, or their destination. Effectively this would mean that although all users are entitled to receive their packets at a certain speed, some users become more equal than others. However, there are many different kinds of traffic differentiation and prioritization, therefore it is extremely helpful is different use cases and their intended and possible impacts are documented.
-Impacts:
+When network intermediaries are able to determine the type of content that a packet is carrying then they can use that information to discriminate in favor of one type of content and against another. This impacts users ability to send and receive the content of their choice. As recommended in {{?RFC8558}} protocol designers should avoid the construction of implicit signals of their content, for instance by use of encryption. Where necessary, signals should be explicit and the implications of those signal for human rights should be documented. Note that many protocols provide signals that can be used to for traffic discrimination, either based on content (e.g., TCP port numbers) or sender/receiver (IP addresses). In many cases -- e.g., IP address -- these signals are difficult to remove, but in other cases, such as TLS Application Layer Protocol Negotiation {{?RFC7301}}, there are active efforts to protect this data {{I-D.ietf-tls-esni}}.
 
 - Right to freedom of expression
 - Right to non-discrimination
