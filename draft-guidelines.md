@@ -497,14 +497,18 @@ Impacts:
 ## Content signals
 
 Question(s): 
-Does your protocol include explicit or implicit plaintext elements, either in the payload or headers, that can be used for differential treatment? Is there a way minimise leaking of such data to network intermediaries? If not, is there a way for deployments of the protocol to make the differential treatment (including prioritisation of certain traffic), if any, auditable for negative impacts on net neutrality?
+ Does your protocol include explicit or implicit plaintext elements, either in the payload or headers, that can be used for differential treatment? Is there a way minimise leaking of such data to network intermediaries? If not, is there a way for deployments of the protocol to make the differential treatment (including prioritisation of certain traffic), if any, auditable for negative impacts on net neutrality?
 
-Example: 
-When network intermediaries are able to determine the type of content that a packet is carrying then they can use that information to discriminate in favor of one type of content and against another. This impacts users ability to send and receive the content of their choice. As recommended in {{?RFC8558}} protocol designers should avoid the construction of implicit signals of their content, for instance by use of encryption. Where necessary, signals should be explicit and added only when they provide clear benefit. In these cases, the implications of those signal for human rights should be documented. Note that many protocols provide signals that can be used to for traffic discrimination, either based on content (e.g., TCP port numbers) or sender/receiver (IP addresses). In many cases -- e.g., IP address -- these signals are difficult to remove, but in other cases, such as TLS Application Layer Protocol Negotiation {{?RFC7301}}, there are active efforts to protect this data {{I-D.ietf-tls-esni}}.
+ Example:
+When network intermediaries are able to determine the type of content that a packet is carrying then they can use that information to discriminate in favor of one type of content and against another. This impacts users ability to send and receive the content of their choice.
 
-- Right to freedom of expression
-- Right to non-discrimination
-- Right to equal protection
+As recommended in {{?RFC8558}} protocol designers should avoid the construction of implicit signals of their content. In general, protocol designers should avoid adding explicit signals for intermediaries. In certain cases, it may be necessary to add such explicit signals, but designers should only do so when they provide clear benefit to end users (see {{?RFC8890}} for more on the priority of constituencies). In these cases, the implications of those signal for human rights should be documented.
+
+Note that many protocols provide signals that are intended for endpoints that can be used as implicit signals by intermediaries for traffic discrimination, either based on content (e.g., TCP port numbers) or sender/receiver (IP addresses). Where possible, these should be protected from intermediaries by encryption. In many cases -- e.g., IP address -- these signals are difficult to remove, but in other cases, such as TLS Application Layer Protocol Negotiation {{?RFC7301}}, there are active efforts to protect this data {{I-D.ietf-tls-esni}}.
+
+ - Right to freedom of expression
+ - Right to non-discrimination
+ - Right to equal protection
 
 ## Internationalization
 
